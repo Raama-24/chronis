@@ -1,0 +1,21 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "My name is Raama. I want to book 6 Sept at 10:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi Raama, thanks for reaching out! I’ve booked your site visit for **6 September at 10:00 AM** at Northstar One, Sector 79, Gurugram.\n\nSomeone from our team will call you a day before to confirm. Looking forward to seeing you there!"
+    },
+    {
+      "role": "user",
+      "content": "What was my site visit time?"
+    },
+    {
+      "role": "assistant",
+      "content": "Your site visit is booked for **6 September at 10:00 AM**."
+    }
+  ],
+  "state": {}
+}

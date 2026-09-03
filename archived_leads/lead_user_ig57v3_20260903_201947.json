@@ -1,0 +1,14 @@
+{
+  "customer_name": "Palak",
+  "budget_mentioned": null,
+  "configuration_interest": "2 BHK",
+  "interest_level": "hot",
+  "site_visit_status": "booked",
+  "follow_up_required": true,
+  "objections_raised": [],
+  "language_used": "English",
+  "conversation_summary": "Customer Palak inquired about 2 BHK flats for personal use. Initially requested a site visit for September 7th at 10 AM, but the slot was unavailable. She accepted the alternative slot of September 7th at 11 AM, which was successfully booked.",
+  "do_not_contact": false,
+  "escalated_to_human": false,
+  "follow_up_preferred_time": null
+}

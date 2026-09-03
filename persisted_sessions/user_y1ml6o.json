@@ -1,0 +1,21 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "i am apal do u rember me"
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, Apal! I remember you. You were looking for a 3 BHK in Northstar One, Sector 79, Gurugram, and we had booked a site visit for you on Saturday, 18th May at 11:00 AM.\n\nHow can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "no , i am palak , rember me"
+    },
+    {
+      "role": "assistant",
+      "content": "I apologize for the confusion, Palak. I don't have a record of a previous conversation with you in my current memory.\n\nCould you tell me a bit about what you're looking for? For example, are you interested in a 2 BHK or 3 BHK at Northstar One, and what is your approximate budget?"
+    }
+  ],
+  "state": {}
+}

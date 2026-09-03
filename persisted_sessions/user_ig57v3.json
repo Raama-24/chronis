@@ -1,0 +1,53 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "hello i am palak"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi Palak, nice to meet you! I’m Aanya from Northstar Homes. How can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "i need a 2bhk flat"
+    },
+    {
+      "role": "assistant",
+      "content": "That’s a great choice. Northstar One in Sector 79, Gurugram has 2 BHK flats starting at ₹1.35 Crore onwards.\n\nTo help me guide you better, are you looking for this for your own home or as an investment?"
+    },
+    {
+      "role": "user",
+      "content": "own home , i want to check visit"
+    },
+    {
+      "role": "assistant",
+      "content": "That sounds perfect! A site visit is the best way to see the layouts and location for yourself.\n\nWhat day and time would work best for you to visit Northstar One?"
+    },
+    {
+      "role": "user",
+      "content": "7 sept 10 am"
+    },
+    {
+      "role": "assistant",
+      "content": "I’m sorry, but the 10:00 AM slot on September 7th isn’t available.\n\nWe do have these other times open:\n*   September 6th at 10:00 AM or 4:00 PM\n*   September 7th at 11:00 AM\n*   September 8th at 3:00 PM\n*   September 10th at 10:00 AM\n\nDoes any of those work for you?"
+    },
+    {
+      "role": "user",
+      "content": "sept 7 11 am"
+    },
+    {
+      "role": "assistant",
+      "content": "Your site visit is confirmed for September 7th at 11:00 AM at Northstar One, Sector 79, Gurugram.\n\nSomeone from our team will call you a day before to confirm the details. We look forward to seeing you then!"
+    },
+    {
+      "role": "user",
+      "content": "yes"
+    },
+    {
+      "role": "assistant",
+      "content": "Great! We’ll see you on September 7th at 11:00 AM. Have a wonderful day, Palak!"
+    }
+  ],
+  "state": {}
+}

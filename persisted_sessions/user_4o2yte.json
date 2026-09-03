@@ -1,0 +1,29 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "hello i am shivani"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello Shivani! How are you doing?"
+    },
+    {
+      "role": "user",
+      "content": "i want a 2bhk flat"
+    },
+    {
+      "role": "assistant",
+      "content": "That’s a great choice! We have 2 BHK options at Northstar One starting from ₹1.35 Crore onwards.\n\nTo help me guide you better, are you looking for this for your own residence or as an investment?"
+    },
+    {
+      "role": "user",
+      "content": "i want a site visit on 7 sept 11 am"
+    },
+    {
+      "role": "assistant",
+      "content": "Great news, Shivani! I’ve booked your site visit for September 7th at 11:00 AM.\n\nSomeone from our team will call you a day before to confirm the details. See you then!"
+    }
+  ],
+  "state": {}
+}

@@ -1,0 +1,14 @@
+{
+  "customer_name": "Simran",
+  "budget_mentioned": null,
+  "configuration_interest": "2 BHK",
+  "interest_level": "hot",
+  "site_visit_status": "booked",
+  "follow_up_required": true,
+  "objections_raised": [],
+  "language_used": "English",
+  "conversation_summary": "Simran inquired about 3 BHK flats but corrected her request to 2 BHK options at Northstar One. She requested a site visit for September 6th at 10 AM, and the assistant confirmed the slot is available and asked for final confirmation to book it.",
+  "do_not_contact": false,
+  "escalated_to_human": false,
+  "follow_up_preferred_time": null
+}

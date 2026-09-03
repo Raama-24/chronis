@@ -1,0 +1,17 @@
+{
+  "customer_name": "Devna",
+  "budget_mentioned": null,
+  "configuration_interest": "2 BHK",
+  "interest_level": "cold",
+  "site_visit_status": "not_requested",
+  "follow_up_required": true,
+  "objections_raised": [
+    "Price is out of budget",
+    "No discount available"
+  ],
+  "language_used": "English",
+  "conversation_summary": "Customer Devna inquired about a 2 BHK flat at Northstar One. Upon learning the starting price is ₹1.35 Crore, she stated it was out of her price range and requested a discount. When no discount was offered, she expressed low interest but agreed to a sales team call on September 6th at 3 PM.",
+  "do_not_contact": false,
+  "escalated_to_human": true,
+  "follow_up_preferred_time": "6 sept 3 pm"
+}

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northstar One - Conversational Sales Assistant (Aanya)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --panel-bg: #1e293b;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --user-msg-bg: #2563eb;
+      --bot-msg-bg: #334155;
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--panel-bg);
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    header {
+      padding: 20px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #3b82f6, #10b981);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .brand-text h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .session-input {
+      background: #0f172a;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      width: 140px;
+      outline: none;
+    }
+
+    .mode-select {
+      background: #0f172a;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .mode-select:focus, .session-input:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-end {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-end:hover {
+      background: #dc2626;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: var(--user-msg-bg);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message.bot {
+      align-self: flex-start;
+      background: var(--bot-msg-bg);
+      color: var(--text-main);
+      border-bottom-left-radius: 4px;
+    }
+
+    .input-area {
+      padding: 16px 20px;
+      background: rgba(15, 23, 42, 0.4);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .input-area input {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: white;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-area input:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-mic {
+      background: #334155;
+      color: white;
+      border: 1px solid var(--border-color);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-mic:hover {
+      background: #475569;
+    }
+
+    .btn-mic.listening {
+      background: #ef4444;
+      border-color: #f87171;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+
+    .btn-send {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-send:hover {
+      background: var(--accent-hover);
+    }
+
+    #analytics-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 650px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-header h2 {
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    pre {
+      background: #0f172a;
+      padding: 16px;
+      border-radius: 10px;
+      color: #38bdf8;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-close-modal {
+      margin-top: 16px;
+      background: var(--border-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      float: right;
+    }
+
+    .btn-close-modal:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand-title">
+        <div class="brand-icon">NO</div>
+        <div class="brand-text">
+          <h1>Northstar One Assistant (Aanya)</h1>
+          <p>Sector 79, Gurugram • Northstar Homes</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <input type="text" id="session-input" class="session-input" placeholder="User ID / Session" title="User Session Identifier" />
+        <select id="mode-selector" class="mode-select">
+          <option value="chat">Mode: Chat</option>
+          <option value="voice">Mode: Voice</option>
+        </select>
+        <button class="btn-end" onclick="endConversation()">End Conversation</button>
+      </div>
+    </header>
+
+    <div class="chat-messages" id="chat-messages">
+      <div class="message bot">
+        Hi! I'm Aanya from Northstar Homes. Welcome to Northstar One, Sector 79, Gurugram. Are you looking for a 2 BHK or 3 BHK apartment?
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Type or click mic to speak..." onkeydown="handleKeyPress(event)" />
+      <button class="btn-mic" id="mic-btn" onclick="toggleSpeechRecognition()" title="Voice Input (Speech-to-Text)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="22"></line>
+        </svg>
+      </button>
+      <button class="btn-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <div id="analytics-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Session Analytics JSON Summary</h2>
+      </div>
+      <pre id="analytics-json">Extracting analytics...</pre>
+      <button class="btn-close-modal" onclick="resetSession()">Start New Session</button>
+    </div>
+  </div>
+
+  <script>
+    // Generate a fresh random Session ID every time a brand new browser tab opens
+    let currentSessionId = 'user_' + Math.random().toString(36).substring(2, 8);
+    document.getElementById('session-input').value = currentSessionId;
+    localStorage.setItem('active_session_id', currentSessionId);
+
+    // Fetch and restore chat UI history from server on load or session change
+    async function loadChatHistory(sessionId) {
+      const messagesDiv = document.getElementById('chat-messages');
+      try {
+        const response = await fetch(`/history/${sessionId}`);
+        const data = await response.json();
+        
+        if (data.history && data.history.length > 0) {
+          messagesDiv.innerHTML = '';
+          data.history.forEach(msg => {
+            appendMessage(msg.role === 'user' ? 'user' : 'bot', msg.content);
+          });
+        } else {
+          messagesDiv.innerHTML = `
+            <div class="message bot">
+              Hi! I'm Aanya from Northstar Homes. Welcome to Northstar One, Sector 79, Gurugram. Are you looking for a 2 BHK or 3 BHK apartment?
+            </div>
+          `;
+        }
+      } catch (e) {
+        console.error("Error loading chat history:", e);
+      }
+    }
+
+    // Load initial history
+    loadChatHistory(currentSessionId);
+
+    // Update active session ID when user manually edits input field
+    document.getElementById('session-input').addEventListener('change', function(e) {
+      currentSessionId = e.target.value.trim() || ('user_' + Math.random().toString(36).substring(2, 8));
+      localStorage.setItem('active_session_id', currentSessionId);
+      loadChatHistory(currentSessionId);
+    });
+
+    let recognition = null;
+    let isListening = false;
+
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onstart = function() {
+        isListening = true;
+        document.getElementById('mic-btn').classList.add('listening');
+      };
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('user-input').value = transcript;
+        sendMessage();
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        stopListening();
+      };
+
+      recognition.onend = function() {
+        stopListening();
+      };
+    }
+
+    function toggleSpeechRecognition() {
+      if (!recognition) {
+        alert("Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.");
+        return;
+      }
+
+      if (isListening) {
+        recognition.stop();
+        stopListening();
+      } else {
+        document.getElementById('mode-selector').value = 'voice';
+        recognition.start();
+      }
+    }
+
+    function stopListening() {
+      isListening = false;
+      document.getElementById('mic-btn').classList.remove('listening');
+    }
+
+    function speakText(text) {
+      const mode = document.getElementById('mode-selector').value;
+      if (mode !== 'voice' || !('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    async function sendMessage() {
+      const inputEl = document.getElementById('user-input');
+      const text = inputEl.value.trim();
+      if (!text) return;
+
+      const mode = document.getElementById('mode-selector').value;
+      currentSessionId = document.getElementById('session-input').value.trim() || currentSessionId;
+      localStorage.setItem('active_session_id', currentSessionId);
+
+      appendMessage('user', text);
+      inputEl.value = '';
+
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            session_id: currentSessionId, 
+            message: text,
+            interaction_mode: mode 
+          })
+        });
+        const data = await response.json();
+        appendMessage('bot', data.reply);
+        
+        if (mode === 'voice') {
+          speakText(data.reply);
+        }
+      } catch (err) {
+        appendMessage('bot', "Error: Unable to connect to backend server.");
+      }
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function appendMessage(sender, content) {
+      const messagesDiv = document.getElementById('chat-messages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${sender}`;
+      msgDiv.textContent = content;
+      messagesDiv.appendChild(msgDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    async function endConversation() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      const modal = document.getElementById('analytics-modal');
+      const jsonPre = document.getElementById('analytics-json');
+      modal.style.display = 'flex';
+      jsonPre.textContent = 'Generating full transcript analytics via LLM...';
+
+      currentSessionId = document.getElementById('session-input').value.trim() || currentSessionId;
+
+      try {
+        const response = await fetch('/end_session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: currentSessionId })
+        });
+        const analyticsData = await response.json();
+        jsonPre.textContent = JSON.stringify(analyticsData, null, 2);
+      } catch (err) {
+        jsonPre.textContent = 'Error extracting session analytics.';
+      }
+    }
+
+    function resetSession() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      currentSessionId = 'user_' + Math.random().toString(36).substring(2, 8);
+      document.getElementById('session-input').value = currentSessionId;
+      localStorage.setItem('active_session_id', currentSessionId);
+
+      document.getElementById('analytics-modal').style.display = 'none';
+      const messagesDiv = document.getElementById('chat-messages');
+      messagesDiv.innerHTML = `
+        <div class="message bot">
+          Hi! I'm Aanya from Northstar Homes. Welcome to Northstar One, Sector 79, Gurugram. Are you looking for a 2 BHK or 3 BHK apartment?
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

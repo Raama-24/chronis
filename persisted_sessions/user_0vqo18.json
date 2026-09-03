@@ -1,0 +1,21 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "i am shivani i need 2 bhk flat"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi Shivani, nice to meet you! Northstar One in Sector 79, Gurugram has 2 BHK options starting from ₹1.35 Crore onwards.\n\nTo help me guide you better, are you looking for this for end-use or investment?"
+    },
+    {
+      "role": "user",
+      "content": "site visit on 7sept 11 am?"
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, we have a slot available for September 7th at 11:00 AM.\n\nShall I go ahead and book that for you?"
+    }
+  ],
+  "state": {}
+}

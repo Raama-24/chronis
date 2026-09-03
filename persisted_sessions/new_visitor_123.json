@@ -1,0 +1,13 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "Hi, I want a 2 BHK flat and site visit on 7 Sept 11 am"
+    },
+    {
+      "role": "assistant",
+      "content": "I’m sorry, but the 11:00 AM slot on September 7 is already booked. We have availability on:\n\n- September 6 at 10:00 AM\n- September 6 at 4:00 PM\n- September 8 at 3:00 PM\n- September 10 at 10:00 AM\n\nWhich of these times works best for you?"
+    }
+  ],
+  "state": {}
+}

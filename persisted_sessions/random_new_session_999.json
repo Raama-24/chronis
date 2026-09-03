@@ -1,0 +1,13 @@
+{
+  "history": [
+    {
+      "role": "user",
+      "content": "Hello I am Palak"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello Palak! It is great to connect with you again. I see you previously inquired about our 2 BHK configurations for personal use and have a site visit confirmed for September 7th at 11 AM. How can I help you further today?"
+    }
+  ],
+  "state": {}
+}

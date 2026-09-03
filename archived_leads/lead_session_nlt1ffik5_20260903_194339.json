@@ -1,0 +1,16 @@
+{
+  "customer_name": "Raama",
+  "budget_mentioned": null,
+  "configuration_interest": "2 BHK",
+  "interest_level": "warm",
+  "site_visit_status": "booked",
+  "follow_up_required": true,
+  "objections_raised": [
+    "Price is expensive"
+  ],
+  "language_used": "English",
+  "conversation_summary": "Customer Raama inquired about 2 BHK flats at Northstar One. He expressed that the starting price of ₹1.35 Crore was expensive. The bot offered to have the sales team call to discuss payment plans, which the customer agreed to for Sept 5 at 9 AM. The customer also requested a site visit and booked a slot for Sept 6 at 10 AM.",
+  "do_not_contact": false,
+  "escalated_to_human": true,
+  "follow_up_preferred_time": "5 sept 9 am"
+}

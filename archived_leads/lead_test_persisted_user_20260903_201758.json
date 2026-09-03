@@ -1,0 +1,14 @@
+{
+  "customer_name": "Raama",
+  "budget_mentioned": null,
+  "configuration_interest": null,
+  "interest_level": "hot",
+  "site_visit_status": "booked",
+  "follow_up_required": true,
+  "objections_raised": [],
+  "language_used": "English",
+  "conversation_summary": "Customer Raama requested and successfully booked a site visit for Northstar One on 6 September at 10:00 AM.",
+  "do_not_contact": false,
+  "escalated_to_human": false,
+  "follow_up_preferred_time": null
+}
