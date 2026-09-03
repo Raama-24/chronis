@@ -28,9 +28,8 @@ pip install -r requirements.txt
 
 Create a .env file in the project root:
 
-GROQ_API_KEY=your_actual_groq_api_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
-
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
 
 ### 2. Launch FastAPI Server
 Run the application using Uvicorn:
